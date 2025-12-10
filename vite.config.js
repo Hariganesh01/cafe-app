@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react(), tailwindcss()],
-  base: "/cafe-app/", // e.g. "/cafe-app/" or "/Cafe-app-using-react-main/"
-});
+  base: command === "build" ? "/cafe-app/" : "/",
+}));
